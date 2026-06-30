@@ -1,0 +1,48 @@
+{
+  "name": "MatchMind AI - Analiză Fotbal Premium",
+  "short_name": "MatchMind AI",
+  "description": "Analiză fotbal de clasă mondială cu MatchMind IQ. Meciuri, statistici și predicții pe baza datelor.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0e27",
+  "theme_color": "#00d4ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230a0e27' width='192' height='192'/><circle cx='96' cy='96' r='85' fill='none' stroke='%2300d4ff' stroke-width='6'/><text x='96' y='110' font-size='80' font-weight='bold' fill='%2300d4ff' text-anchor='middle' font-family='Arial'>M</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%230a0e27' width='512' height='512'/><circle cx='256' cy='256' r='230' fill='none' stroke='%2300d4ff' stroke-width='16'/><text x='256' y='295' font-size='220' font-weight='bold' fill='%2300d4ff' text-anchor='middle' font-family='Arial'>M</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["sports"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%230a0e27' width='540' height='720'/><text x='270' y='360' dominant-baseline='middle' text-anchor='middle' font-size='80' font-weight='bold' fill='%2300d4ff' font-family='Arial'>MatchMind AI</text></svg>",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Azi",
+      "short_name": "Meciuri",
+      "description": "Meciurile de azi",
+      "url": "/?page=today"
+    },
+    {
+      "name": "Căutare",
+      "short_name": "Căuta",
+      "description": "Cauta echipe",
+      "url": "/?page=search"
+    }
+  ]
+}

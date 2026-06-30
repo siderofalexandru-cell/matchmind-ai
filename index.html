@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MatchMind AI - Analiză fotbal premium cu AI">
+    <meta name="theme-color" content="#0a0e27">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MatchMind AI">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230a0e27' width='192' height='192'/><circle cx='96' cy='96' r='85' fill='none' stroke='%2300d4ff' stroke-width='6'/><text x='96' y='110' font-size='80' font-weight='bold' fill='%2300d4ff' text-anchor='middle' font-family='Arial'>M</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%230a0e27' width='180' height='180' rx='44'/><circle cx='90' cy='90' r='75' fill='none' stroke='%2300d4ff' stroke-width='5'/><text x='90' y='105' font-size='70' font-weight='bold' fill='%2300d4ff' text-anchor='middle' font-family='Arial'>M</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <title>MatchMind AI - Analiză Fotbal</title>
+</head>
+<body>
+    <div class="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="logo">⚡ MatchMind AI</h1>
+                <div class="nav-links">
+                    <button class="nav-btn active" data-page="home" title="Acasă">🏠</button>
+                    <button class="nav-btn" data-page="today" title="Azi">📅</button>
+                    <button class="nav-btn" data-page="search" title="Căutare">🔍</button>
+                    <button class="nav-btn" data-page="history" title="Istoric">📊</button>
+                    <button class="nav-btn" data-page="settings" title="Setări">⚙️</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="container">
+            <!-- Home Page -->
+            <section class="page active" id="home">
+                <div class="hero">
+                    <div class="hero-icon">⚽</div>
+                    <h1>MatchMind AI</h1>
+                    <p class="tagline">Analiză fotbal de clasă mondială</p>
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">⚡</span>
+                            <span>Rapid</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🧠</span>
+                            <span>AI</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📊</span>
+                            <span>Date</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔒</span>
+                            <span>Sigur</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-actions">
+                    <button class="btn btn-primary" onclick="navigateTo('today')">Meciurile Azi</button>
+                    <button class="btn btn-secondary" onclick="navigateTo('settings')">Configurare</button>
+                </div>
+            </section>
+
+            <!-- Today's Matches -->
+            <section class="page" id="today">
+                <div class="page-header">
+                    <h2>Meciurile de Azi</h2>
+                    <button class="btn-icon" onclick="refreshMatches()" title="Reîncarcă">🔄</button>
+                </div>
+                <div class="api-status" id="apiStatus"></div>
+                <div class="matches-container" id="matchesContainer">
+                    <div class="loading">Încarcă meciuri...</div>
+                </div>
+            </section>
+
+            <!-- Search Page -->
+            <section class="page" id="search">
+                <div class="page-header">
+                    <h2>Căutare Meci</h2>
+                </div>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Cauta echipa sau meci..." class="search-input">
+                        <button class="btn btn-primary" onclick="performSearch()">Cauta</button>
+                    </div>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </section>
+
+            <!-- Match Details -->
+            <section class="page" id="match-details">
+                <div class="match-details-container" id="matchDetailsContainer"></div>
+            </section>
+
+            <!-- History Page -->
+            <section class="page" id="history">
+                <div class="page-header">
+                    <h2>Istoric Analize</h2>
+                </div>
+                <div class="history-container" id="historyContainer">
+                    <div class="no-history">Niciun meci analizat</div>
+                </div>
+            </section>
+
+            <!-- Settings Page -->
+            <section class="page" id="settings">
+                <div class="page-header">
+                    <h2>Setări</h2>
+                </div>
+                <div class="settings-container">
+                    <div class="settings-group">
+                        <label for="apiKey">Cheie API:</label>
+                        <input type="password" id="apiKey" placeholder="Introdu cheia API" class="input-field">
+                        <small>Obții de la <a href="https://www.api-sports.io/" target="_blank">api-sports.io</a></small>
+                    </div>
+                    <div class="settings-group">
+                        <label for="notifications">Notificări:</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="notifications" checked>
+                            <span class="toggle-slider"></span>
+                        </div>
+                    </div>
+                    <div class="settings-actions">
+                        <button class="btn btn-primary" onclick="saveSettings()">Salvează</button>
+                        <button class="btn btn-danger" onclick="clearAllData()">Șterge Date</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));
+        }
+    </script>
+    <script src="api.js"></script>
+    <script src="analysis.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
