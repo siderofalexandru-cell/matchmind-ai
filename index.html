@@ -3,36 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MatchMind AI - Analiză fotbal premium cu AI">
+    <meta name="description" content="MatchMind AI - Analiză fotbal premium">
     <meta name="theme-color" content="#0a0e27">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="MatchMind AI">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css?v=200">
     <title>MatchMind AI</title>
 </head>
 <body>
     <div class="app">
-        <!-- Navigation Bar -->
+        <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-container">
                 <h1 class="logo">⚡ MatchMind AI</h1>
                 <div class="nav-links">
-                    <button id="homeBtn" class="nav-btn active" title="Acasă">🏠</button>
-                    <button id="todayBtn" class="nav-btn" title="Meciurile de azi">📅</button>
-                    <button id="searchBtn" class="nav-btn" title="Căutare">🔍</button>
-                    <button id="historyBtn" class="nav-btn" title="Istoric">📊</button>
-                    <button id="settingsBtn" class="nav-btn" title="Setări">⚙️</button>
+                    <button id="homeBtn" class="nav-btn active">🏠</button>
+                    <button id="todayBtn" class="nav-btn">📅</button>
+                    <button id="searchBtn" class="nav-btn">🔍</button>
+                    <button id="historyBtn" class="nav-btn">📊</button>
+                    <button id="settingsBtn" class="nav-btn">⚙️</button>
                 </div>
             </div>
         </nav>
 
         <!-- Main Container -->
         <main class="container">
-            <!-- HOME PAGE -->
+            <!-- Home Page -->
             <section id="homePage" class="page active">
-                <div class="page-title">Acasă</div>
+                <h2>Acasă</h2>
                 <div class="hero">
                     <div class="hero-icon">⚽</div>
                     <h1>MatchMind AI</h1>
@@ -40,33 +37,33 @@
                 </div>
             </section>
 
-            <!-- TODAY PAGE -->
+            <!-- Today Page -->
             <section id="todayPage" class="page">
-                <div class="page-title">Meciurile de azi</div>
+                <h2>Meciurile de azi</h2>
                 <div class="content-placeholder">
                     <p>Meciurile de astazi vor fi afisate aici</p>
                 </div>
             </section>
 
-            <!-- SEARCH PAGE -->
+            <!-- Search Page -->
             <section id="searchPage" class="page">
-                <div class="page-title">Caută</div>
+                <h2>Căutare</h2>
                 <div class="content-placeholder">
                     <p>Căutare meci - va fi implementat</p>
                 </div>
             </section>
 
-            <!-- HISTORY PAGE -->
+            <!-- History Page -->
             <section id="historyPage" class="page">
-                <div class="page-title">Istoric</div>
+                <h2>Istoric</h2>
                 <div class="content-placeholder">
                     <p>Istoric meciuri analizate</p>
                 </div>
             </section>
 
-            <!-- SETTINGS PAGE -->
+            <!-- Settings Page -->
             <section id="settingsPage" class="page">
-                <div class="page-title">Setări</div>
+                <h2>Setări</h2>
                 <div class="content-placeholder">
                     <p>Setări aplicatie</p>
                 </div>
@@ -74,9 +71,6 @@
         </main>
     </div>
 
-    <div id="toast" class="toast"></div>
-
-    <!-- Load app script with cache busting -->
     <script src="app.js?v=200"></script>
 </body>
 </html>
