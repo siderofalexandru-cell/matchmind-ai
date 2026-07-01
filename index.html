@@ -11,7 +11,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230a0e27' width='192' height='192'/><circle cx='96' cy='96' r='85' fill='none' stroke='%2300d4ff' stroke-width='6'/><text x='96' y='110' font-size='80' font-weight='bold' fill='%2300d4ff' text-anchor='middle' font-family='Arial'>M</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%230a0e27' width='180' height='180' rx='44'/><circle cx='90' cy='90' r='75' fill='none' stroke='%2300d4ff' stroke-width='5'/><text x='90' y='105' font-size='70' font-weight='bold' fill='%2300d4ff' text-anchor='middle' font-family='Arial'>M</text></svg>">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
     <title>MatchMind AI - Analiză Fotbal</title>
 </head>
 <body>
@@ -133,13 +133,35 @@
 
     <div id="toast" class="toast"></div>
 
+    <!-- Development Mode: Unregister service workers and disable cache -->
     <script>
+        console.log('🔄 Development Mode: Unregistering service workers and disabling cache...');
+        
+        // Unregister all existing service workers
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                if (registrations.length > 0) {
+                    console.log(`Found ${registrations.length} service worker(s). Unregistering...`);
+                    registrations.forEach(registration => {
+                        console.log('❌ Unregistering service worker:', registration.scope);
+                        registration.unregister();
+                    });
+                } else {
+                    console.log('✓ No service workers registered');
+                }
+            }).catch(err => console.log('Error checking service workers:', err));
+        } else {
+            console.log('⚠ Service Worker API not available');
         }
+        
+        // Force cache busting
+        console.log('✓ Cache busting enabled with query parameters (v=3)');
+        console.log('✓ All static assets will be reloaded on page refresh');
     </script>
-    <script src="api.js"></script>
-    <script src="analysis.js"></script>
-    <script src="app.js"></script>
+
+    <!-- Load scripts with cache-busting query parameters -->
+    <script src="api.js?v=3"></script>
+    <script src="analysis.js?v=3"></script>
+    <script src="app.js?v=3"></script>
 </body>
 </html>
