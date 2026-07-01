@@ -20,7 +20,53 @@ function initializeApp() {
     if (historyBtn) historyBtn.addEventListener('click', () => showPage('history'));
     if (settingsBtn) settingsBtn.addEventListener('click', () => showPage('settings'));
     
+    // Initialize settings
+    initializeSettings();
+    
     console.log('✓ App ready');
+}
+
+function initializeSettings() {
+    console.log('✓ Initializing settings');
+    
+    const apiKeyInput = document.getElementById('apiKeyInput');
+    const saveApiKeyBtn = document.getElementById('saveApiKeyBtn');
+    const apiKeyStatus = document.getElementById('apiKeyStatus');
+    
+    // Load saved API key from localStorage
+    const savedApiKey = localStorage.getItem('matchmind_api_key');
+    if (savedApiKey && apiKeyInput) {
+        apiKeyInput.value = savedApiKey;
+        console.log('✓ Loaded API key from localStorage');
+    }
+    
+    // Save API key when button is clicked
+    if (saveApiKeyBtn) {
+        saveApiKeyBtn.addEventListener('click', () => {
+            if (apiKeyInput) {
+                const apiKey = apiKeyInput.value.trim();
+                if (apiKey) {
+                    localStorage.setItem('matchmind_api_key', apiKey);
+                    console.log('✓ API key saved to localStorage');
+                    
+                    if (apiKeyStatus) {
+                        apiKeyStatus.textContent = '✓ Cheia API a fost salvată';
+                        apiKeyStatus.style.color = '#2ed573';
+                        
+                        setTimeout(() => {
+                            apiKeyStatus.textContent = '';
+                        }, 3000);
+                    }
+                } else {
+                    console.warn('✗ API key is empty');
+                    if (apiKeyStatus) {
+                        apiKeyStatus.textContent = '✗ Introdu o cheie valida';
+                        apiKeyStatus.style.color = '#ff4757';
+                    }
+                }
+            }
+        });
+    }
 }
 
 function showPage(page) {

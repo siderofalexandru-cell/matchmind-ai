@@ -64,8 +64,13 @@
             <!-- Settings Page -->
             <section id="settingsPage" class="page">
                 <h2>Setări</h2>
-                <div class="content-placeholder">
-                    <p>Setări aplicatie</p>
+                <div class="settings-container">
+                    <div class="setting-group">
+                        <label for="apiKeyInput">Cheie API Sports:</label>
+                        <input type="password" id="apiKeyInput" placeholder="Introdu cheia API...">
+                        <button id="saveApiKeyBtn">Salvează</button>
+                        <small id="apiKeyStatus"></small>
+                    </div>
                 </div>
             </section>
         </main>
